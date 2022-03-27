@@ -1,0 +1,17 @@
+size 90 60
+set hei 2.0
+set lwidth 0.1
+set font texcmr
+
+
+                       
+begin graph
+        nobox               
+	data queue.dat d1=c1,c2 d2=c1,c4
+	data limit.dat d3=c1,c2 d4=c1,c4
+        xtitle "Number of cars"
+	ytitle "Number of queues"
+	key pos tl hei 1.5
+        d1 line color red err d2 key "Without speed limit"
+        d3 line color green err d4 key "With speed limit"
+end graph   

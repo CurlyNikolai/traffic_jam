@@ -1,3 +1,65 @@
+! A C-program for MT19937, with initialization improved 2002/1/26.
+! Coded by Takuji Nishimura and Makoto Matsumoto.                 
+
+! Code converted to Fortran 95 by José Rui Faustino de Sousa
+! Date: 2002-02-01
+
+! Enhanced version by José Rui Faustino de Sousa
+! Date: 2003-04-30
+
+! Interface:
+!
+! Kinds:
+!   genrand_intg
+!     Integer kind used must be at least 32 bits.
+!   genrand_real
+!     Real kind used 
+!
+! Types:
+!   genrand_state
+!     Internal representation of the RNG state.
+!   genrand_srepr
+!     Public representation of the RNG state. Should be used to save the RNG state.
+!
+! Procedures:
+!   assignment(=)
+!     Converts from type genrand_state to genrand_srepr and vice versa.
+!   genrand_init
+!     Internal RNG state initialization subroutine accepts either an genrand_intg integer
+!     or a vector as seed or a new state using "put=" returns the present state using
+!     "get=". If it is called with "get=" before being seeded with "put=" returns a state
+!     initialized with a default seed.
+!   genrand_int32
+!     Subroutine returns an array or scalar whose elements are random integer on the
+!     [0,0xffffffff] interval.
+!   genrand_int31
+!     Subroutine returns an array or scalar whose elements are random integer on the
+!     [0,0x7fffffff] interval.
+!   genrand_real1
+!     Subroutine returns an array or scalar whose elements are random real on the
+!     [0,1] interval.
+!   genrand_real2
+!     Subroutine returns an array or scalar whose elements are random real on the
+!     [0,1[ interval.
+!   genrand_real3
+!     Subroutine returns an array or scalar whose elements are random real on the
+!     ]0,1[ interval.
+!   genrand_res53
+!     Subroutine returns an array or scalar whose elements are random real on the
+!     [0,1[ interval with 53-bit resolution.
+
+! Before using, initialize the state by using genrand_init( put=seed )  
+
+! This library is free software.                                  
+! This library is distributed in the hope that it will be useful, 
+! but WITHOUT ANY WARRANTY; without even the implied warranty of  
+! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.            
+
+! Copyright (C) 1997, 2002 Makoto Matsumoto and Takuji Nishimura. 
+! Any feedback is very welcome.                                   
+! http://www.math.keio.ac.jp/matumoto/emt.html                    
+! email: matumoto@math.keio.ac.jp
+
 module mt95
   
   implicit none
